@@ -22,8 +22,7 @@
               {{ menu.menu_name }}
             </b-card-title>
             <b-card-text>
-              This is a wider card with supporting text as a natural lead-in to
-              additional content. This content is a little bit longer.
+             {{ menu.menu_detail }}
             </b-card-text>
           </b-card-body>
         </b-col>
@@ -37,17 +36,13 @@ export default {
   name: "Card",
   data() {
     return {
-      menus: [{
-          id: 1,
-          menu_img: "https://cdn.pixabay.com/photo/2017/12/09/08/18/pizza-3007395_960_720.jpg",
-          menu_name: "Piszaaa"
-      }],
+      menus: [],
     };
   },
-//   created() {
-//     this.axios.get("http://localhost:8000/api/menus/").then((response) => {
-//       this.menus = response.data;
-//     });
-//   },
+  created() {
+    this.axios.get("http://localhost:80/e-food/api/menus.php").then((response) => {
+      this.menus = response.data;
+    });
+  },
 };
 </script>

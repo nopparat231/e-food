@@ -1,15 +1,15 @@
 <template>
   <div>
-    <Card />
+    <Cards />
   </div>
 </template>
 
 <script>
-import Card from "./layouts/Card";
+import Cards from "./layouts/Cards";
 export default {
   name: "Home",
   components: {
-    Card,
+    Cards,
   },
 };
 </script>
