@@ -1,5 +1,6 @@
 <template>
   <div>
+    <Model :id="id" :menu_name="menu_name" :menu_img="menu_img" :menu_detail="menu_detail" />
     <b-card-group deck>
       <ul>
         <li v-for="menu in menus" :key="menu.id">
@@ -15,7 +16,13 @@
               This is a wider card with supporting text below.
             </b-card-text>
             <template #footer>
-              <small class="text-muted">Last updated 3 mins ago</small>
+              <b-button
+                v-b-modal.modal-center
+                squared
+                @click="GetMenu(menu.id,menu.menu_name,menu.menu_img,menu.menu_detail)"
+                variant="text-decoration-none"
+                >เลือกเมนู</b-button
+              >
             </template>
           </b-card>
         </li>
@@ -25,11 +32,17 @@
 </template>
 
 <script>
+import Model from "./Model";
+
 export default {
   name: "Cards",
   data() {
     return {
       menus: [],
+      id: '',
+      menu_name: '',
+      menu_img: '',
+      menu_detail: ''
     };
   },
   created() {
@@ -38,6 +51,17 @@ export default {
       .then((response) => {
         this.menus = response.data;
       });
+  },
+  methods: {
+    GetMenu(id,menu_name,menu_img,menu_detail) {
+      this.id = id;
+      this.menu_name = menu_name;
+      this.menu_img = menu_img;
+      this.menu_detail = menu_detail;
+    },
+  },
+  components: {
+    Model,
   },
 };
 </script>
