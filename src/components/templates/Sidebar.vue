@@ -1,21 +1,9 @@
 <template>
   <div>
-    <b-button variant="dark" style="margin-right: 0.5rem;"
-      ><b-icon icon="minecart-loaded" scale="1"></b-icon
-      ><b-badge variant="light">9</b-badge></b-button
-    >
-
-    <b-button
-      variant="dark"
-      style="margin-right: 0.5rem;"
-      v-b-toggle.sidebar-no-header
-      ><b-icon icon="list" scale="1.5"></b-icon
-    ></b-button>
-
     <b-sidebar
+     title="Setting"
       id="sidebar-no-header"
       aria-labelledby="sidebar-no-header-title"
-      no-header
       backdrop
       shadow
     >
