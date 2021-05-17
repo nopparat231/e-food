@@ -52,15 +52,13 @@ if ($requestMethod == 'POST') {
 
 	if (!empty($result)) {
 
-		$user_id = $result['user_id'];
-		$restaurant_id = $result['restaurant_id'];
-		$menu_name = $result['menu_name'];
-		$menu_img = $result['menu_img'];
-		$menu_detail = $result['menu_detail'];
-		$menu_status = $result['menu_status'];
+		$user_id = $result['user_id'] ?? "";
+		$menu_id = $result['menu_id'] ?? "";
+		$orders_detail = $result['orders_detail'] ?? "";
+		$orders_status = $result['orders_status'] ?? "";
 
 		//คำสั่ง SQL สำหรับเพิ่มข้อมูลใน Database
-		$sql = "INSERT INTO menus (id,user_id,user_id,menu_name,menu_img,menu_detail,menu_status) VALUES (NULL,'$user_id','$user_id','$menu_name','$menu_img','$menu_detail','$menu_status')";
+		$sql = "INSERT INTO orders (id,user_id,menu_id,orders_detail,orders_status) VALUES (NULL,'$user_id','$menu_id','$orders_detail','$orders_status')";
 
 		$result = mysqli_query($link, $sql);
 
@@ -80,22 +78,18 @@ if ($requestMethod == 'PUT') {
 
 		$id = $_GET['id'];
 
-		$user_id = $result['user_id'];
-		$restaurant_id = $result['restaurant_id'];
-		$menu_name = $result['menu_name'];
-		$menu_img = $result['menu_img'];
-		$menu_detail = $result['menu_detail'];
-		$menu_status = $result['menu_status'];
+		$user_id	   = $result['user_id'];
+		$menu_id 	   = $result['menu_id'];
+		$orders_detail = $result['orders_detail'];
+		$orders_status = $result['orders_status'];
 
 		//คำสั่ง SQL สำหรับแก้ไขข้อมูลใน Database โดยจะแก้ไขเฉพาะข้อมูลตามค่า id ที่ส่งมา
-		$sql = "UPDATE menus SET 
-			user_id 		= '$user_id',
-			restaurant_id   = '$restaurant_id',
-			menu_name       = '$menu_name',
-			menu_img        = '$menu_img',
-			menu_detail     = '$menu_detail',
-			menu_status     = '$menu_status'
-			WHERE id        = $id";
+		$sql = "UPDATE orders SET 
+			user_id 			 = '$user_id',
+			menu_id  			 = '$menu_id',
+			orders_detail        = '$orders_detail',
+			orders_status        = '$orders_status'
+			WHERE id        	 = $id";
 
 		$result = mysqli_query($link, $sql);
 
@@ -116,7 +110,7 @@ if ($requestMethod == 'DELETE') {
 		$id = $_GET['id'];
 
 		//คำสั่ง SQL สำหรับลบข้อมูลใน Database ตามค่า id ที่ส่งมา
-		$sql = "DELETE FROM menus WHERE id = $id";
+		$sql = "DELETE FROM orders WHERE id = $id";
 
 		$result = mysqli_query($link, $sql);
 

@@ -38,7 +38,12 @@ export default {
       name: "",
       nameState: null,
       submittedNames: [],
-      order: {}
+      order: {
+        user_id: "1",
+        menu_id: "",
+        orders_detail: "",
+        orders_status: "1"
+      },
     };
   },
   props: {
@@ -69,8 +74,11 @@ export default {
         return;
       }
       // Push the name to submitted names
-      this.submittedNames.push(this.name);
-
+      //this.submittedNames.push(this.name);
+      this.order.menu_id = this.id,
+      this.order.orders_detail = this.orders_detail,
+      this.addOrder();
+      //console.log(this.order);
       // Hide the modal manually
       this.$nextTick(() => {
         this.$bvModal.hide("modal-prevent-closing");
@@ -78,7 +86,7 @@ export default {
     },
     addOrder() {
       this.axios
-        .post("http://localhost:8000/api/menus", this.menu)
+        .post("http://localhost:80/api/orders.php", this.order)
         .then((response) => console.log(response))
         .catch((err) => console.log(err))
         .finally(() => (this.loading = false));

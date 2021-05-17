@@ -60,7 +60,7 @@ if ($requestMethod == 'POST') {
 		$menu_status = $result['menu_status'];
 
 		//คำสั่ง SQL สำหรับเพิ่มข้อมูลใน Database
-		$sql = "INSERT INTO menus (id,user_id,user_id,menu_name,menu_img,menu_detail,menu_status) VALUES (NULL,'$user_id','$user_id','$menu_name','$menu_img','$menu_detail','$menu_status')";
+		$sql = "INSERT INTO menus (id,user_id,restaurant_id,menu_name,menu_img,menu_detail,menu_status) VALUES (NULL,'$user_id','$restaurant_id','$menu_name','$menu_img','$menu_detail','$menu_status')";
 
 		$result = mysqli_query($link, $sql);
 
