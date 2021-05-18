@@ -13,16 +13,14 @@
 
       <form ref="form" @submit.stop.prevent="handleSubmit">
         <b-form-group
-          label="Name"
+          label="รายละเอียดเพิ่มเติม :"
           label-for="name-input"
-          invalid-feedback="Name is required"
           :state="nameState"
         >
           <b-form-input
             id="name-input"
             v-model="name"
             :state="nameState"
-            required
           ></b-form-input>
         </b-form-group>
       </form>
@@ -39,10 +37,10 @@ export default {
       nameState: null,
       submittedNames: [],
       order: {
-        user_id: "1",
+        user_id: "24",
         menu_id: "",
         orders_detail: "",
-        orders_status: "1"
+        orders_status: "1",
       },
     };
   },
@@ -75,18 +73,20 @@ export default {
       }
       // Push the name to submitted names
       //this.submittedNames.push(this.name);
-      this.order.menu_id = this.id,
-      this.order.orders_detail = this.orders_detail,
-      this.addOrder();
+      (this.order.menu_id = this.id),
+        (this.order.orders_detail = this.name),
+        this.addOrder();
       //console.log(this.order);
       // Hide the modal manually
       this.$nextTick(() => {
-        this.$bvModal.hide("modal-prevent-closing");
+        this.$bvModal.hide("modal-center");
+        //setTimeout(location.reload(), 1000)
+        //this.$root.$emit('bv::toggle::collapse', 'sidebar-1')
       });
     },
     addOrder() {
       this.axios
-        .post("http://localhost:80/api/orders.php", this.order)
+        .post("http://localhost/e-food/api/orders.php", this.order)
         .then((response) => console.log(response))
         .catch((err) => console.log(err))
         .finally(() => (this.loading = false));

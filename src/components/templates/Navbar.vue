@@ -16,7 +16,7 @@
                 variant="dark"
                 style="margin-right: 0.5rem;"
                 ><b-icon icon="minecart-loaded" scale="1"></b-icon
-                ><b-badge variant="light">9</b-badge>
+                ><b-badge variant="light">3</b-badge>
               </b-button>
             </li>
             <li class="nav-item">

@@ -17,12 +17,14 @@ $requestMethod = $_SERVER["REQUEST_METHOD"];
 //ตรวจสอบหากใช้ Method GET
 if ($requestMethod == 'GET') {
 	//ตรวจสอบการส่งค่า id
-	if (isset($_GET['id']) && !empty($_GET['id'])) {
+	if (isset($_GET['user_id']) && !empty($_GET['user_id'])) {
 
-		$id = $_GET['id'];
+		$id = $_GET['user_id'];
 
 		//คำสั่ง SQL กรณี มีการส่งค่า id มาให้แสดงเฉพาะข้อมูลของ id นั้น
-		$sql = "SELECT * FROM orders WHERE id = $id";
+		$sql = "SELECT * FROM orders
+		INNER JOIN menus
+		ON orders.menu_id = menus.id WHERE orders.user_id = $id";
 	} else {
 		//คำสั่ง SQL แสดงข้อมูลทั้งหมด
 		$sql = "SELECT * FROM orders";
