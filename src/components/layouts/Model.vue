@@ -80,8 +80,8 @@ export default {
       // Hide the modal manually
       this.$nextTick(() => {
         this.$bvModal.hide("modal-center");
-        //setTimeout(location.reload(), 1000)
-        //this.$root.$emit('bv::toggle::collapse', 'sidebar-1')
+        window.location.reload()
+        this.$root.$emit('bv::toggle::collapse', 'sidebar-1')
       });
     },
     addOrder() {
