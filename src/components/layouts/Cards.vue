@@ -36,7 +36,7 @@
                   )
                 "
                 variant="text-decoration-none"
-                >เลือกเมนู</b-button
+                >เลือกร้านค้า</b-button
               >
             </template>
           </b-card>
