@@ -9,6 +9,7 @@ yarn install
 ```
 yarn serve
 ```
+ืnpm run serve
 
 ### Compiles and minifies for production
 ```
